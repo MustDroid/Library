@@ -106,7 +106,8 @@ public class DatabaseBookRepository implements IBookRepository{
     @Override
     public void rentBook(int id) {
         try {
-            PreparedStatement st = connection.prepareStatement("UPDATE books SET bookInStock=bookInStock-1 WHERE id=1");
+            PreparedStatement st = connection.prepareStatement("UPDATE books SET bookInStock=bookInStock-1 WHERE id=?");
+            st.setInt(1,id);
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
