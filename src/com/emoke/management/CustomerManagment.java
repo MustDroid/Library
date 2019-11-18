@@ -161,13 +161,14 @@ public class CustomerManagment {
                 String word = in.nextLine();
                 int idWordCategory = wordRepository.getWordCategoryFromWord(word);
                 System.out.println("CATEGORY IS " + idWordCategory);
-                List<Book> recommendedBooks = bookRepository.getBooksByCategory(idWordCategory);
                 System.out.println("Found following recommended books for you:");
+                List<Book> recommendedBooks = bookRepository.getBooksByCategory(idWordCategory);
+               // System.out.println("Found following recommended books for you:");
                 for(Book book : recommendedBooks) {
                     System.out.println(book);
-                    rentABook(in);
 
                 }
+                rentABook(in);
             }
 
             System.out.println("------------------");

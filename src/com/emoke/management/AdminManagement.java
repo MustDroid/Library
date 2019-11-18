@@ -100,6 +100,7 @@ public class AdminManagement {
             } else if(choice == 3) {
                 addNewBookByAdmin(in);
                 System.out.println("Congratulation Lukas, you added a new book to your library!");
+                System.out.println("If you want to add other books,please press 3");
             }
 
             System.out.println("------------------");
