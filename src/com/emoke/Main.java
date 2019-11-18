@@ -3,6 +3,7 @@ package com.emoke;
 import com.emoke.management.AdminManagement;
 import com.emoke.management.CustomerManagment;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,7 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         customerRepository = new DatabaseCustomerRepository(MySQLDbConnection.getInstance().getConnection());
         bookRepository = new DatabaseBookRepository(MySQLDbConnection.getInstance().getConnection());
         wordRepository = new DatabaseWordRepository(MySQLDbConnection.getInstance().getConnection());

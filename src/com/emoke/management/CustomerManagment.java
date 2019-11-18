@@ -2,6 +2,9 @@ package com.emoke.management;
 
 import com.emoke.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.SQLOutput;
 import java.text.DateFormat;
@@ -36,8 +39,8 @@ public class CustomerManagment {
         final int MAX_CHOICE = 3;
         welcomeTextForCustomer();
 
-        System.out.println("1.) Log in");
-        System.out.println("2.) Rent a book");
+        System.out.println("1.) Register");
+        System.out.println("2.) Rent a book without register");
         System.out.println("3.) Browse books");
         System.out.println("0.) Exit");
 
@@ -59,8 +62,9 @@ public class CustomerManagment {
         return -1;
     }
 
-    public void searchByNameLogin (Scanner in){
+    public void searchByNameLogin (Scanner in) throws NoSuchAlgorithmException {
         final String SAY_YES = "Yes";
+        //String sayYes =
         final String SAY_NO = "No";
         System.out.println("Enter first name please");
         String firstName = in.nextLine();
@@ -85,7 +89,7 @@ public class CustomerManagment {
     }
 
 
-    public void registerCustomer (Scanner in){
+    public void registerCustomer (Scanner in) throws NoSuchAlgorithmException {
         in = new Scanner(System.in);
         //Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
@@ -94,6 +98,8 @@ public class CustomerManagment {
         int id = Integer.parseInt(in.nextLine());
         System.out.println("Choose your personal PIN");
         String pinCodeHash = in.nextLine();
+        hashPin(pinCodeHash);
+        //System.out.println(pinCodeHash);
         System.out.println("Enter your email address please");
         String email = in.nextLine();
         System.out.println("Enter first name please");
@@ -151,8 +157,21 @@ public class CustomerManagment {
         }
    }
 
+    public void hashPin(String pinCodeHash) throws NoSuchAlgorithmException {
+        String pw = pinCodeHash;
+       MessageDigest md = MessageDigest.getInstance("MD5");
+       byte[] hashInBytes = md.digest(pw.getBytes(StandardCharsets.UTF_8));
 
-    public void run() {
+       StringBuilder sb = new StringBuilder();
+       for (byte b : hashInBytes) {
+           sb.append(String.format("%02x", b));
+       }
+       System.out.println(sb.toString());
+
+   }
+
+
+    public void run() throws NoSuchAlgorithmException {
         Scanner in = new Scanner(System.in);
         while (true) {
             int choice = printMenuAndGetChioceCustomer(in);
