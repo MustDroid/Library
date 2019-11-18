@@ -33,11 +33,12 @@ public class CustomerManagment {
 
     public int printMenuAndGetChioceCustomer(Scanner in) {
         final int MIN_CHOICE = 0;
-        final int MAX_CHOICE = 2;
+        final int MAX_CHOICE = 3;
         welcomeTextForCustomer();
 
         System.out.println("1.) Log in");
         System.out.println("2.) Rent a book");
+        System.out.println("3.) Browse books");
         System.out.println("0.) Exit");
 
         try
@@ -128,15 +129,25 @@ public class CustomerManagment {
    }
    public void qoutesForCustomer(int idWordCategory) {
         if (idWordCategory == 1) {
+            System.out.println("My quote for you is: ");
             System.out.println("The good you do today will be forgotten tomorrow.Do good anyway.");
+            System.out.println(".................................................................");
         }else if (idWordCategory == 2) {
+            System.out.println("My quote for you is: ");
             System.out.println("Everything that has a beginning has an ending. Make your peace with that and all will be well");
+            System.out.println(".................................................................");
         } else if (idWordCategory == 3) {
+            System.out.println("My quote for you is: ");
             System.out.println("The average dog is a nicer person than the average person");
+            System.out.println(".................................................................");
         }else if (idWordCategory == 4) {
+            System.out.println("My quote for you is: ");
             System.out.println("All you need is love. But a little chocolate now and then doesn’t hurt");
+            System.out.println(".................................................................");
         }else  {
+            System.out.println("My quote for you is: ");
             System.out.println("You are the source of my joy, the center of my world and the whole of my heart");
+            System.out.println(".................................................................");
         }
    }
 
@@ -161,10 +172,15 @@ public class CustomerManagment {
                // System.out.println("Found following recommended books for you:");
                 for(Book book : recommendedBooks) {
                     System.out.println(book);
-
                 }
                 rentABook(in);
 
+            }else if(choice == 3) {
+                List<Book> browseBook = bookRepository.getAllBooks();
+                for (Book book : browseBook) {
+                    System.out.println(book);
+                }
+                rentABook(in);
             }
             System.out.println("------------------");
         }

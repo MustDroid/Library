@@ -33,6 +33,7 @@ public class Main {
             admin.run();
         }else {
             CustomerManagment customer = new CustomerManagment();
+            System.out.println("Hello Dear " + name);
             customer.run();
         }
 

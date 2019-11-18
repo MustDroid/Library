@@ -116,6 +116,11 @@ public class DatabaseCustomerRepository implements ICustomerRepository {
         return customer;
     }
 
+    @Override
+    public void deleteCustomer(Customer customer) {
+
+    }
+
     private Customer getCustomerFromResultSet(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");
         String pinCodeHash = rs.getString("pinCodeHash");
