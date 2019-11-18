@@ -111,7 +111,7 @@ public class CustomerManagment {
         customerRepository.addCustomer(new Customer(id, pinCodeHash, email, firstName, surname, birthday, address, creditCardNumber, cvc, expiryDate));
     }
 
-   /* public void rentARecommendedBook(Scanner in) {
+   /* public void addNewBookByAdmin(Scanner in) {
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
         java.sql.Date sqlDate;
         System.out.println("Choose book ID");

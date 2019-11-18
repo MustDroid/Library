@@ -69,6 +69,9 @@ public class Book {
         return bookInStock;
     }
 
+    public int getIdWordCategory() {
+        return idWordCategory;
+    }
 
     @Override
     public String toString() {

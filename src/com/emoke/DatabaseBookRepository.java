@@ -61,8 +61,8 @@ public class DatabaseBookRepository implements IBookRepository{
     @Override
     public void addBook(Book book) {
         try {
-            PreparedStatement st = connection.prepareStatement("INSERT INTO books (title, autor, category, isbn, fsk, publishingCompany, appearance, amountPages, language, bookInStock)" +
-                    " VALUES(?, ?, ?, ?, ?, ?, ?, ?,?)");
+            PreparedStatement st = connection.prepareStatement("INSERT INTO books (title, autor, isbn, fsk, publishingCompany, appearance, amountPages, language,IdWordCategory, bookInStock)" +
+                    " VALUES(?, ?, ?, ?, ?, ?, ?, ?,?,?)");
             st.setString(1, book.getTitle());
             st.setString(2, book.getAutor());
             st.setInt(3, book.getIsbn());
@@ -71,7 +71,8 @@ public class DatabaseBookRepository implements IBookRepository{
             st.setDate(6, book.getAppearance());
             st.setInt(7, book.getAmountPages());
             st.setString(8, book.getLanguage());
-            st.setInt(9,book.getBookInStock());
+            st.setInt(9,book.getIdWordCategory());
+            st.setInt(10,book.getBookInStock());
 
             st.executeUpdate();
         } catch (SQLException e) {

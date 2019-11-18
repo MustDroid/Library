@@ -38,7 +38,7 @@ public class Main {
 
 
         //comedy
-        Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+       /* Date now = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
         bookRepository.addBook(new Book(1,"Cartman und die Analsonde","Matt Stone",12345,567,"Comedy Central",now,20,"german",3,30));
         bookRepository.addBook(new Book(2,"Mr. Hankey, der Weihnachtskot","Matt Stone",12345,456,"Comedy Central",now,20,"german",3,45));
@@ -70,7 +70,7 @@ public class Main {
         bookRepository.addBook(new Book(17,"Enjoy this Life - In 30 Tagen zu dir selbst","Pascal Voggenhuber",846758,7878,"Penguin Group",now,67,"german",1,11));
         bookRepository.addBook(new Book(17,"Das Leben ist zu kurz fur spater"," Alexandra Reinwarth",846758,7878,"Penguin Group",now,67,"german",1,11));
         bookRepository.addBook(new Book(17,"Why not?","Lars Amend",846758,7878,"Penguin Group",now,67,"german",1,11));
-        bookRepository.addBook(new Book(17,"Das Powerprinzip. Grenzenlose Energie"," Anthony Robbins",846758,7878,"Penguin Group",now,67,"german",1,11));
+        bookRepository.addBook(new Book(17,"Das Powerprinzip. Grenzenlose Energie"," Anthony Robbins",846758,7878,"Penguin Group",now,67,"german",1,11));*/
 
 
 
