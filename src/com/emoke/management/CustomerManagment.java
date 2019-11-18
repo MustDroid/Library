@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Scanner;
 
@@ -111,41 +113,32 @@ public class CustomerManagment {
         customerRepository.addCustomer(new Customer(id, pinCodeHash, email, firstName, surname, birthday, address, creditCardNumber, cvc, expiryDate));
     }
 
-   /* public void addNewBookByAdmin(Scanner in) {
-        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-        java.sql.Date sqlDate;
-        System.out.println("Choose book ID");
-        int id = Integer.parseInt(in.nextLine());
-        System.out.println("Choose title");
-        String title = in.nextLine();
-        System.out.println("Enter autor name");
-        String autor = in.nextLine();
-        System.out.println("Enter isbn");
-        int isbn =  Integer.parseInt(in.nextLine());
-        System.out.println("Enter fsk please");
-        int fsk =  Integer.parseInt(in.nextLine());
-        System.out.println("Enter publishingCompany");
-        String publishingCompany = in.nextLine();
-        System.out.println("Enter appearance please");
-        Date appearance = Date.valueOf(in.nextLine());
-        System.out.println("Enter amountPages please");
-        int amountPages = Integer.parseInt(in.nextLine());
-        System.out.println("Enter language please");
-        String language = in.nextLine();
-        System.out.println("Enter idWordCategory please");
-        int idWordCategory = Integer.parseInt(in.nextLine());
-        System.out.println("Enter bookInStock please");
-        String bookInStock = in.nextLine();
-    }*/
+
 
    public void rentABook(Scanner in) {
+       LocalDate today = LocalDate.now();
+       LocalDate in2weeks = today.plus(14, ChronoUnit.DAYS);
        System.out.println("Enter book id please");
        int  id = Integer.parseInt(in.nextLine());
        bookRepository.rentBook(id);
-       System.out.println("You rented the book");
+       System.out.println("You rented the book on " + today);
+       System.out.println("You should bring it on " + in2weeks);
+       System.out.println("If you want to rent other books,please press 2 or 0 to exit");
 
    }
-
+   public void qoutesForCustomer(int idWordCategory) {
+        if (idWordCategory == 1) {
+            System.out.println("The good you do today will be forgotten tomorrow.Do good anyway.");
+        }else if (idWordCategory == 2) {
+            System.out.println("Everything that has a beginning has an ending. Make your peace with that and all will be well");
+        } else if (idWordCategory == 3) {
+            System.out.println("The average dog is a nicer person than the average person");
+        }else if (idWordCategory == 4) {
+            System.out.println("All you need is love. But a little chocolate now and then doesn’t hurt");
+        }else  {
+            System.out.println("You are the source of my joy, the center of my world and the whole of my heart");
+        }
+   }
 
 
     public void run() {
@@ -153,6 +146,7 @@ public class CustomerManagment {
         while (true) {
             int choice = printMenuAndGetChioceCustomer(in);
             if (choice == 0) {
+                System.out.println("Thank you for your visit in Lukas's Library");
                 break;
             } else if (choice == 1) {
                 searchByNameLogin(in);
@@ -160,7 +154,8 @@ public class CustomerManagment {
                 System.out.println("How do you feel today?");
                 String word = in.nextLine();
                 int idWordCategory = wordRepository.getWordCategoryFromWord(word);
-                System.out.println("CATEGORY IS " + idWordCategory);
+                //System.out.println("CATEGORY IS " + idWordCategory);
+                qoutesForCustomer(idWordCategory);
                 System.out.println("Found following recommended books for you:");
                 List<Book> recommendedBooks = bookRepository.getBooksByCategory(idWordCategory);
                // System.out.println("Found following recommended books for you:");
@@ -169,8 +164,8 @@ public class CustomerManagment {
 
                 }
                 rentABook(in);
-            }
 
+            }
             System.out.println("------------------");
         }
     }

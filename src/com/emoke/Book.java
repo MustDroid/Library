@@ -77,16 +77,16 @@ public class Book {
     public String toString() {
         return "{" +
                 "id:" + id +
-                ", title:" + title + '\'' +
-                ", autor:" + autor + '\'' +
-                ", isbn:" + isbn +
-                ", fsk:" + fsk +
-                ", publishingCompany:" + publishingCompany + '\'' +
-                ", appearance:" + appearance +
-                ", amountPages:" + amountPages +
-                ", language=:" + language + '\'' +
-                ", idWordCategory:" + idWordCategory +
-                ", bookInStock:" + bookInStock +
+                " title:" + title + "|" + '\'' +
+                " autor:" + autor + "|" + '\'' +
+                " isbn:" + isbn + "|" +  '\'' +
+                " fsk:" + fsk + "|" +  '\'' +
+                " publishingCompany:" + publishingCompany +  "|" + '\'' +
+                " appearance:" + appearance + "|" +  '\'' +
+                " amountPages:" + amountPages + "|" +  '\'' +
+                " language=:" + language +  "|" +  '\'' +
+                " idWordCategory:" + idWordCategory +  "|" +  '\'' +
+                " bookInStock:" + bookInStock +  "|" +  '\'' +
                 '}';
     }
 }
